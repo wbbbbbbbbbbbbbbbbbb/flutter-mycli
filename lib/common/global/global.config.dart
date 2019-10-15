@@ -57,8 +57,8 @@ class Config {
   /// 调试状态(生产模式强制关闭debug)
   static bool get debug => !bool.fromEnvironment("dart.vm.product") ? debugEnv : false;
 
-  /// 当前接口前缀
-  static String get baseUrl => httpUrls[httpEnv];
+  /// 当前接口前缀(生产模式强制production)
+  static String get baseUrl => !bool.fromEnvironment("dart.vm.product") ? httpUrls[httpEnv] : httpUrls['production'];
 
   // --------- 读取项 ---------
 }
