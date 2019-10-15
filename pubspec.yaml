@@ -42,6 +42,9 @@ dependencies:
   # 路由
   fluro: ^1.5.1
 
+  # 监听网络
+  connectivity: ^0.4.4+1
+
   
   
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../http/apis/api.dart';
 import '../../common/global/global.dart';
 import '../../widgets/index.dart';
+import '../../http/myio.dart';
 
 class Home extends StatelessWidget {
   const Home({Key key}) : super(key: key);
@@ -44,16 +45,20 @@ class Home extends StatelessWidget {
             }),
             RaisedButton(
               onPressed: () async {
-                state(context, 'global').testState();
-                var test = await ProductApis.productList();
-                print(test);
-                if (Config.debug) {
-                  showToast("哈哈哈，我是你爸爸吖！");
-                  showNotif(
-                    Text("哼，我是你爷爷"),
-                    background: Colors.green,
-                  );
-                }
+                YYResultModel haha = await MyIo.requestGet('productList');
+                print(haha.code);
+                print(haha.success);
+                print("==============");
+                // state(context, 'global').testState();
+                // var test = await ProductApis.productList();
+                // print(test);
+                // if (Config.debug) {
+                //   showToast("哈哈哈，我是你爸爸吖！");
+                //   showNotif(
+                //     Text("哼，我是你爷爷"),
+                //     background: Colors.green,
+                //   );
+                // }
               },
               child: Text("点我"),
             ),
