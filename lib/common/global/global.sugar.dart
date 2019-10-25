@@ -117,10 +117,9 @@ bool isIos = Platform.isIOS;
 /// context 上下文
 /// route 路由路径
 /// param 路由参数
-/// clearStack 是否关闭全部页面跳转
+/// clearStack 是否关闭全部页面跳转 包括根路由，慎用
 /// replace 是否关闭当前页面跳转
-goPage(context, String route,
-    {Map<String, dynamic> param,replace = false, clearStack = false}) {
+goPage(context, String route, {Map<String, dynamic> param,replace = false, clearStack = false}) {
   String paramString = "";
   if (param != null && param.isNotEmpty) {
     paramString = "?";
@@ -143,8 +142,7 @@ goPage(context, String route,
     return null;
   }
 
-  return Global.router
-      .navigateTo(context, "$route$paramString", replace: replace, clearStack: clearStack);
+  return Global.router.navigateTo(context, "$route$paramString", replace: replace, clearStack: clearStack);
 }
 
 /// 缓存
