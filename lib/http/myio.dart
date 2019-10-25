@@ -41,7 +41,7 @@ class MyIo {
     //options处理
     if (option != null) {
       option.headers = headers;
-    } else{
+    } else {
       option = new Options(method: "get");
       option.headers = headers;
     }
