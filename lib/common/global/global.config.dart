@@ -25,7 +25,7 @@ class Config {
 
   /// 接口地址前缀
   static Map httpUrls = {
-    "production": "https://api.up-petroleum.com/api/",
+    "production": "https://apitest.up-petroleum.com/api/",
     "development": "https://oil.ittun.com/api/",
     "wbnb": "https://oil.ittun.com/api/",
   };

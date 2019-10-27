@@ -1,10 +1,13 @@
 import '../../common/global/global.dart';
+import '../../models/index.dart';
+import '../../http2/index.dart';
 
 class ProductApis {
   /// 商品列表 get
   /// url productList
   static productList() async {
-    return await Global.http.dioGet("productList");
+    ResultModel result = await Io.get("productList");
+    return Productlist_json.fromJson(result.data);
   }
 
   /// 商品详情 get
@@ -12,6 +15,7 @@ class ProductApis {
   /// param 
   ///   id 商品id
   static productInfo(data) async {
-    return await Global.http.dioGet("productInfo", data: data);
+    ResultModel result = await Io.get("productInfo", data: data);
+    return Productinfo_json.fromJson(result.data);
   }
 }

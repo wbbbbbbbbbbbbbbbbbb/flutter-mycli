@@ -4,6 +4,10 @@ import '../../http/apis/api.dart';
 import '../../common/global/global.dart';
 import '../../widgets/index.dart';
 import '../../http/myio.dart';
+import 'package:dio/dio.dart';
+
+import '../../models/index.dart';
+import '../../http2/index.dart';
 
 class Home extends StatelessWidget {
   const Home({Key key}) : super(key: key);
@@ -24,7 +28,7 @@ class Home extends StatelessWidget {
             RaisedButton(
               onPressed: () async {
                 state(context, "user").login(
-                    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE5NDc0IiwiZXhwIjoxNTcwNjg4MzY4fQ.fL-Rkw4QcY7Jn3EvfUdY9JV1LGAD6CDqIdYCYvGNHxg");
+                    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTA1MjR9.NFbOQlPwU8_RsT3Rdq63aFYB8vqmUEoJ3fdmAGGuXz0");
               },
               child: Text(
                 "登录",
@@ -45,13 +49,22 @@ class Home extends StatelessWidget {
             }),
             RaisedButton(
               onPressed: () async {
-                YYResultModel haha = await MyIo.requestGet('productList');
-                print(haha.code);
-                print(haha.success);
-                print("==============");
+                // var dio = new Dio();
+                // var response = await dio.get('https://apitest.up-petroleum.com/api/productList');
+                // var data = Productlist_json.fromJson(response.data);
+                // print(data.data[0]);
+                // var data = await Io.get("productList");
+                // print(data.data);
+                // print(data.status);
+                // print(data.msg);
+                // print(data.code);
+
+                // YYResultModel haha = await MyIo.requestGet('productList');
+                // print(haha);
+                // print("==============");
                 // state(context, 'global').testState();
-                // var test = await ProductApis.productList();
-                // print(test);
+                var test = await ProductApis.productInfo({"id": 24});
+                print(test.data);
                 // if (Config.debug) {
                 //   showToast("哈哈哈，我是你爸爸吖！");
                 //   showNotif(
@@ -74,34 +87,20 @@ class Home extends StatelessWidget {
               },
               child: Text("跳转"),
             ),
-            snackBuider((callback) {
-              return RaisedButton(
-                onPressed: () {
-                  callback(SnackBar(
-                    content: Text('哈哈'),
-                    action: SnackBarAction(
-                      label: '撤消',
-                      onPressed: () => {},
-                    ),
-                  ));
-                },
-                child: Text('显示SnackBar'),
-              );
-            }),
-            RaisedButton(
-              onPressed: () async {
-                showDialog<Null>(
-                  context: context, //BuildContext对象
-                  barrierDismissible: false,
-                  builder: (BuildContext context) {
-                    return LoadingDialog(
-                      text: '正在转菊花...',
-                    );
-                  },
-                );
-              },
-              child: Text("弹窗"),
-            ),
+            // snackBuider((callback) {
+            //   return RaisedButton(
+            //     onPressed: () {
+            //       callback(SnackBar(
+            //         content: Text('哈哈'),
+            //         action: SnackBarAction(
+            //           label: '撤消',
+            //           onPressed: () => {},
+            //         ),
+            //       ));
+            //     },
+            //     child: Text('显示SnackBar'),
+            //   );
+            // }),
           ],
         ),
       ),

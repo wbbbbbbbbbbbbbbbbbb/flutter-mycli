@@ -45,12 +45,14 @@ dependencies:
   # 监听网络
   connectivity: ^0.4.4+1
 
-  
-  
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  # json to model
+  json_model: ^0.0.2
+  build_runner: ^1.0.0
+  json_serializable: ^2.0.0
 
 
 # For information on the generic Dart part of this file, see the

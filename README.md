@@ -10,7 +10,7 @@
 | http       | http接口通讯                                              |
 | i10n       | 多语言相关的类都在此目录下                                  |
 | page       | 项目的页面存放地                                           |
-| models     | Json文件对应的Dart Model类会在此目录下(现在发现这东西没鬼用=-= 已删除)|
+| models     | Json文件对应的Dart Model类会在此目录下(现在发现这东西没鬼用=-= 已删除)(现在发现这东西是有鬼用的，所以重新加了回来，真香)|
 | states     | 保存APP中需要跨组件共享的状态类                             |
 | routes     | 存放所有路由页面类                                         |
 | widgets    | APP内封装的一些Widget组件都在该目录下                       |

@@ -27,7 +27,7 @@ class MyIo {
     }
 
     //处理请求头
-    Map<String, String> headers = {'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE5NDc0IiwiZXhwIjoxNTcwNjg4MzY4fQ.fL-Rkw4QcY7Jn3EvfUdY9JV1LGAD6CDqIdYCYvGNHxg'};
+    Map<String, String> headers = {'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTA1MjR9.NFbOQlPwU8_RsT3Rdq63aFYB8vqmUEoJ3fdmAGGuXz0'};
     if (header!=null) {
       headers.addAll(header);
     }
