@@ -10,6 +10,7 @@ import 'package:overlay_support/overlay_support.dart'; // toast
 // 本地库
 import './common/global/global.dart';
 import './page/home/home_page.dart';
+import './page/home/bloc_page.dart';
 
 void main() {
   Global.init().then((e) {
@@ -82,6 +83,6 @@ class _MyHomePageState extends State<MyHomePage> {
       height: 1334,
       allowFontScaling: Config.allowFontScaling,
     )..init(context);
-    return Home();
+    return BloCPage();
   }
 }
