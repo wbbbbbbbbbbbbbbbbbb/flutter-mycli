@@ -37,7 +37,7 @@ class Global {
 
   //初始化全局信息，会在APP启动时执行
   static Future init() async {
-    prefs = await SharedPreferences.getInstance(); // 初始化缓存
+    // prefs = await SharedPreferences.getInstance(); // 初始化缓存
 
     providers = States.init(); // 初始化状态管理
       

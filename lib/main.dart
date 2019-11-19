@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:provide/provide.dart'; // 状态管理
 import 'package:flutter_screenutil/flutter_screenutil.dart'; // 屏幕适配
 import 'package:overlay_support/overlay_support.dart'; // toast
+import 'package:shared_preferences/shared_preferences.dart';
 
 // 本地库
 import './common/global/global.dart';
@@ -75,6 +76,12 @@ class _MyHomePageState extends State<MyHomePage> {
     super.didChangeDependencies();
   }
 
+  // 异步加载缓存
+  Future lodingPrefs() async {
+    Global.prefs = await SharedPreferences.getInstance(); // 初始化缓存
+    return Global.prefs;
+  }
+
   @override
   Widget build(BuildContext context) {
     // 设计稿的尺寸初始化为iphone6
@@ -83,6 +90,15 @@ class _MyHomePageState extends State<MyHomePage> {
       height: 1334,
       allowFontScaling: Config.allowFontScaling,
     )..init(context);
-    return BloCPage();
+    return FutureBuilder(
+      future: lodingPrefs(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.hasData) {
+          return BloCPage();
+        } else {
+          return Container();
+        }
+      },
+    );
   }
 }

@@ -21,28 +21,28 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # 数据持久化
+  # 数据持久化 https://github.com/flutter/plugins/tree/master/packages/shared_preferences
   shared_preferences: ^0.5.3+4
 
-  # 状态管理
+  # 状态管理 https://github.com/google/flutter-provide
   provide: ^1.0.2
 
-  # 屏幕适配
+  # 屏幕适配 https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md
   flutter_screenutil: ^0.5.3
 
-  # Http请求库
+  # Http请求库 https://github.com/flutterchina/dio/blob/master/README-ZH.md
   dio: ^2.1.13
 
-  # 调起第三方应用
+  # 调起第三方应用 https://github.com/flutter/plugins/tree/master/packages/url_launcher/url_launcher
   url_launcher: ^4.1.0
 
-  # toast
+  # toast https://github.com/boyan01/overlay_support
   overlay_support: ^1.0.1
 
-  # 路由
+  # 路由 https://github.com/theyakka/fluro
   fluro: ^1.5.1
 
-  # 监听网络
+  # 监听网络 https://github.com/flutter/plugins
   connectivity: ^0.4.4+1
 
 dev_dependencies:
