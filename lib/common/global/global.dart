@@ -7,44 +7,14 @@
 // |    同时，本文件夹 [global文件夹] 不能有任何报错，以及不确定会不会报错的代码(一错就炸你信不信=-=)
 // +----------------------------------------------------------------------
 
-// flutter and dart
-import 'dart:convert';
-import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-// package
 import 'package:shared_preferences/shared_preferences.dart'; // 数据持久化
 import 'package:provide/provide.dart'; // 状态管理
-import 'package:flutter_screenutil/flutter_screenutil.dart'; // 屏幕适配
-import 'package:overlay_support/overlay_support.dart'; // toast
-import 'package:fluro/fluro.dart'; // 路由
-
-// local
-import '../../states/states.dart';
-import '../../http/http.dart';
-import '../../routes/routes.dart';
-
-// part
-part 'global.sugar.dart';
-part 'global.config.dart';
 
 class Global {
   static SharedPreferences prefs; // 缓存
   static Providers providers; // 状态
-  static Http http; // 网络请求
-  static Router router; // 路由
 
   //初始化全局信息，会在APP启动时执行
   static Future init() async {
-    // prefs = await SharedPreferences.getInstance(); // 初始化缓存
-
-    providers = States.init(); // 初始化状态管理
-      
-    http = Http(); // 网络请求初始化
-
-    final route = Router(); // 路由初始化
-    Routes.configureRoutes(route);
-    router = route;
   }
 }

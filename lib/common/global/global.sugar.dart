@@ -7,7 +7,14 @@
 // | 4. 实在要存放组件，可以放在lib/widgets，这是专门存放组件的地方
 // +----------------------------------------------------------------------
 
-part of 'global.dart';
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import './global.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:overlay_support/overlay_support.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// 颜色转换
 Color col(String c) {
@@ -17,44 +24,6 @@ Color col(String c) {
 /// px转dp适配函数.
 double px(double px) {
   return ScreenUtil().setWidth(px);
-}
-
-/// px转dp适配函数 - 文字与1px时.
-double sp(double sp) {
-  return ScreenUtil().setSp(sp);
-}
-
-/// text文字不能为null处理
-String txt(String text) {
-  return text ?? "";
-}
-
-/// 状态管理
-state(context, type) {
-  if (States.stateOption.containsKey(type)) {
-    return States.stateOption[type](context);
-  } else {
-    print("你的状态管理传错参了，辣鸡");
-  }
-}
-
-// 状态管理组件
-stateBuilder(context, type, builder) {
-  if (States.stateBuilder.containsKey(type)) {
-    return States.stateBuilder[type](context, builder);
-  } else {
-    print("你的状态管理传错参了，辣鸡");
-  }
-}
-
-/// 网络请求get方法
-Future get(url, {data}) {
-  return Global.http.get(url, data: data);
-}
-
-/// 网络请求get方法
-Future post(url, {data}) {
-  return Global.http.post(url, data: data);
 }
 
 /// toast 土司弹窗
@@ -113,37 +82,15 @@ double flex1 = double.infinity;
 /// 判断是否iOS
 bool isIos = Platform.isIOS;
 
-/// 跳转路由
-/// context 上下文
-/// route 路由路径
-/// param 路由参数
-/// clearStack 是否关闭全部页面跳转 包括根路由，慎用
-/// replace 是否关闭当前页面跳转
-goPage(context, String route, {Map<String, dynamic> param,replace = false, clearStack = false}) {
-  String paramString = "";
-  if (param != null && param.isNotEmpty) {
-    paramString = "?";
-    param.forEach((String key, dynamic value) {
-      if (key != null && value != null) {
-        paramString += "&$key=${Uri.encodeComponent(json.encode(value))}";
-      }
-    });
-  }
-
-  if (!Routes.routes.containsKey(route)) {
-    showToast("路由错误");
-    return null;
-  }
-
-  if (Routes.routes[route].containsKey("isLogin") &&
-      Routes.routes[route]["isLogin"] &&
-      Global.prefs.getString('token') == null) {
-    showToast("请先登录");
-    return null;
-  }
-
-  return Global.router.navigateTo(context, "$route$paramString", replace: replace, clearStack: clearStack);
-}
-
 /// 缓存
 SharedPreferences cache = Global.prefs;
+
+// 解开json
+deJson(val) {
+  return val != null ? json.decode(val) : null;
+}
+
+// 转换json
+toJson(val) {
+  return val != null ? json.encode(val) : null;
+}

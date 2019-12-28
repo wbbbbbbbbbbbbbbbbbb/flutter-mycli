@@ -1,6 +1,9 @@
 // 原生库
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/route/index.dart';
 
 // 外部库
 import 'package:provide/provide.dart'; // 状态管理
@@ -9,11 +12,15 @@ import 'package:overlay_support/overlay_support.dart'; // toast
 import 'package:shared_preferences/shared_preferences.dart';
 
 // 本地库
-import './common/global/global.dart';
-import './page/home/home_page.dart';
-import './page/home/bloc_page.dart';
+import 'common/global/global.dart';
+import 'common/global/global.config.dart';
+import 'common/global/global.sugar.dart';
+import 'route/routes.dart';
 
 void main() {
+  return runApp(
+    MyApp(),
+  );
   Global.init().then((e) {
     // 屏幕方向
     if (Config.screenDirection == "column") {
@@ -52,9 +59,12 @@ class MyApp extends StatelessWidget {
     return OverlaySupport(
       child: MaterialApp(
         title: 'Flutter Demo',
-        debugShowCheckedModeBanner: true,
-        onGenerateRoute: Global.router.generator,
-        theme: ThemeData(primarySwatch: Colors.yellow),
+        navigatorKey: Router.navigatorKey,
+        onGenerateRoute: Routes.onGenerateRoute,
+        theme: ThemeData(
+          primarySwatch: Colors.yellow,
+          platform: Platform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
+        ),
         home: MyHomePage(),
       ),
     );
@@ -70,17 +80,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   void didChangeDependencies() {
-    String token = cache.getString("token");
-    state(context, "user").login(token);
-    
     super.didChangeDependencies();
   }
 
   // 异步加载缓存
   Future lodingPrefs() async {
-    Global.prefs = await SharedPreferences.getInstance(); // 初始化缓存
-    return Global.prefs;
+    // Global.prefs = await SharedPreferences.getInstance(); // 初始化缓存
+    // return Global.prefs;
   }
+
+  int count = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -88,16 +97,39 @@ class _MyHomePageState extends State<MyHomePage> {
     ScreenUtil.instance = ScreenUtil(
       width: 750,
       height: 1334,
-      allowFontScaling: Config.allowFontScaling,
     )..init(context);
     return FutureBuilder(
       future: lodingPrefs(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        if (snapshot.hasData) {
-          return BloCPage();
-        } else {
-          return Container();
-        }
+        return Scaffold(
+          floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              count++;
+            });
+          },
+          child: Text("测试"),
+        ),
+          appBar: AppBar(
+            title: Text("趣果 - FlutterCli 使用教程"),
+          ),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("$count"),
+                RaisedButton(
+                  onPressed: () => Router.to("/route"),
+                  child: Text("路由 的 例子"),
+                ),
+                RaisedButton(
+                  onPressed: () => Router.to("/bloc"),
+                  child: Text("bloc 的 例子"),
+                ),
+              ],
+            ),
+          ),
+        );
       },
     );
   }

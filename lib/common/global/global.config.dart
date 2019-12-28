@@ -6,19 +6,14 @@
 // | 3. 全局性不可更改的设置都在本页面设置，如接口公共域名等，可更改或需要获取的，在状态管理中保存
 // +----------------------------------------------------------------------
 
-part of 'global.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Config {
   // --------- 设置项 ---------
 
-  /// app版本
-  static String version = "1.0.0";
-
   /// 设置调试开关
   static bool debugEnv = true;
-
-  /// 根据系统字体进行缩放
-  static bool allowFontScaling = true;
 
   /// 接口环境环境
   static String httpEnv = "production";

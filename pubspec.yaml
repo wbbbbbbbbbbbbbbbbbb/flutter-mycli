@@ -39,11 +39,12 @@ dependencies:
   # toast https://github.com/boyan01/overlay_support
   overlay_support: ^1.0.1
 
-  # 路由 https://github.com/theyakka/fluro
-  fluro: ^1.5.1
+  # bloc
+  flutter_bloc: ^2.1.1
 
-  # 监听网络 https://github.com/flutter/plugins
-  connectivity: ^0.4.4+1
+  # 状态
+  provider: ^3.2.0
+
 
 dev_dependencies:
   flutter_test:
