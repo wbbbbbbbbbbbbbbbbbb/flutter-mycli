@@ -22,28 +22,28 @@ dependencies:
     sdk: flutter
 
   # 数据持久化 https://github.com/flutter/plugins/tree/master/packages/shared_preferences
-  shared_preferences: ^0.5.3+4
+  shared_preferences: ">=0.5.3+4 <3.0.0"
 
   # 状态管理 https://github.com/google/flutter-provide
   provide: ^1.0.2
 
   # 屏幕适配 https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md
-  flutter_screenutil: ^0.5.3
+  flutter_screenutil: ">=0.5.3 <6.0.0"
 
   # Http请求库 https://github.com/flutterchina/dio/blob/master/README-ZH.md
-  dio: ^2.1.13
+  dio: ">=2.1.13 <6.0.0"
 
   # 调起第三方应用 https://github.com/flutter/plugins/tree/master/packages/url_launcher/url_launcher
-  url_launcher: ^4.1.0
+  url_launcher: ">=4.1.0 <7.0.0"
 
   # toast https://github.com/boyan01/overlay_support
-  overlay_support: ^1.0.1
+  overlay_support: ">=1.0.1 <3.0.0"
 
   # bloc
-  flutter_bloc: ^2.1.1
+  flutter_bloc: ">=2.1.1 <9.0.0"
 
   # 状态
-  provider: ^3.2.0
+  provider: ">=3.2.0 <7.0.0"
 
 
 dev_dependencies:
@@ -51,9 +51,9 @@ dev_dependencies:
     sdk: flutter
 
   # json to model
-  json_model: ^0.0.2
-  build_runner: ^1.0.0
-  json_serializable: ^2.0.0
+  json_model: ">=0.0.2 <2.0.0"
+  build_runner: ">=1.0.0 <3.0.0"
+  json_serializable: ">=2.0.0 <7.0.0"
 
 
 # For information on the generic Dart part of this file, see the
